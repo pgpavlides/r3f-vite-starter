@@ -6,7 +6,7 @@ import React, {
   useContext,
 } from "react";
 import { useThree } from "@react-three/fiber";
-import { CameraControls } from "@react-three/drei";
+import { CameraControls, Environment, SpotLight } from "@react-three/drei";
 import { Model } from "./Model";
 import { useStore } from "../global/zustand";
 
@@ -40,38 +40,37 @@ export function Experience({ camera }) {
   // const zoomOut = () => cameraControlsRef.current.zoom( - camera.zoom / 2, true );
 
   useEffect(() => {
-
-
     if (cubeSide === "side0") {
       cameraControlsRef.current.setLookAt(5, 5, 5, 0, 0, 0, true);
     } else if (cubeSide === "side1") {
       cameraControlsRef.current.setLookAt(0.885, -0.003, -0.004, 0, 0, 0, true);
       cameraControlsRef.current.dolly(-6.885, true);
-
     } else if (cubeSide === "side2") {
       cameraControlsRef.current.setLookAt(-0.014, -0.855, 0.037, 0, 0, 0, true);
       cameraControlsRef.current.dolly(-6.885, true);
-
+      cameraControlsRef.current.rotateAzimuthTo(0, true);
     } else if (cubeSide === "side3") {
       cameraControlsRef.current.setLookAt(-0.025, 0.078, -0.908, 0, 0, 0, true);
       cameraControlsRef.current.dolly(-6.885, true);
-
     } else if (cubeSide === "side4") {
       cameraControlsRef.current.setLookAt(0, -0.013, 0.895, 0, 0, 0, true);
       cameraControlsRef.current.dolly(-6.885, true);
-
     } else if (cubeSide === "side5") {
-      cameraControlsRef.current.setLookAt(-0.887, -0.121, -0.005, 0, 0, 0, true);
+      cameraControlsRef.current.setLookAt(
+        -0.887,
+        -0.121,
+        -0.005,
+        0,
+        0,
+        0,
+        true
+      );
       cameraControlsRef.current.dolly(-6.885, true);
-
     } else if (cubeSide === "side6") {
       cameraControlsRef.current.setLookAt(-0.017, 0.895, -0.062, 0, 0, 0, true);
       cameraControlsRef.current.dolly(-6.885, true);
-
+      cameraControlsRef.current.rotateAzimuthTo(0, true);
     }
-
-  
-      
   }, [cubeSide]);
 
   //================= APPLY SETTINGS =================
@@ -190,12 +189,24 @@ export function Experience({ camera }) {
     <>
       <CameraControls
         enabled={true}
-        smoothTime={1.5}
+        smoothTime={0.5}
         ref={cameraControlsRef}
         makeDefault
       />
-      <ambientLight intensity={5} />
-      <pointLight />
+      {/* <SpotLight position={[0,10,0]}distance={5} angle={3.15} attenuation={10} anglePower={5} color={'red'} /> */}
+      {/* <ambientLight intensity={5} /> */}
+      <Environment preset="warehouse" />
+      <directionalLight position={[0, 5, 0]} intensity={0.3} castShadow />
+      <directionalLight position={[0, -5, 0]} intensity={0.3} castShadow />
+
+      <directionalLight position={[5, 0, 0]} intensity={0.3} castShadow />
+
+      <directionalLight position={[-5, 0, 0]} intensity={0.3} castShadow />
+      <directionalLight position={[0, 0, 5]} intensity={0.3} castShadow />
+
+      <directionalLight position={[0, 0, -5]} intensity={0.3} castShadow />
+
+      {/* <pointLight position={[0,5,0]} /> */}
       {/* <ExtraModels /> */}
       <Model />
     </>

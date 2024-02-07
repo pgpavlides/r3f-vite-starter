@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import { useStore } from "../global/zustand";
 
-export const sections = ["intro", "side1", "side2", "side3", "side4", "side5", "side6"]; // Updated section names
+export const sections = [
+  "intro",
+  "side1",
+  "side2",
+  "side3",
+  "side4",
+  "side5",
+  "side6",
+]; // Updated section names
 
 export const UI = ({ section, onSectionChange }) => {
   const [isInit, setIsInit] = useState(false);
@@ -33,11 +41,39 @@ export const UI = ({ section, onSectionChange }) => {
             >
               {idx === currentSectionIndex && (
                 <>
-                  <h1 className="text-2xl font-medium text-stone-100">
-                    {sectionItem === "intro" ? "EXPLORE" : sectionItem === "side1" ? "Side 1" : sectionItem === "side2" ? "Side 2" : sectionItem === "side3" ? "Side 3" : sectionItem === "side4" ? "Side 4" : sectionItem === "side5" ? "Side 5" : sectionItem === "side6" ? "Side 6" : ""}
+                  <h1 className="text-5xl font-medium text-stone-100">
+                    {sectionItem === "intro"
+                      ? "Tap the Letters to Explore!"
+                      : sectionItem === "side1"
+                      ? "Evolutionary"
+                      : sectionItem === "side2"
+                      ? "Empower"
+                      : sectionItem === "side3"
+                      ? "Growth"
+                      : sectionItem === "side4"
+                      ? "Innovate"
+                      : sectionItem === "side5"
+                      ? "Navigate"
+                      : sectionItem === "side6"
+                      ? "Transform"
+                      : ""}
                   </h1>
-                  <p className="text-white">
-                    {sectionItem === "intro" ? "IGNITE" : sectionItem === "side1" ? "Content for Side 1" : sectionItem === "side2" ? "Content for Side 2" : sectionItem === "side3" ? "Content for Side 3" : sectionItem === "side4" ? "Content for Side 4" : sectionItem === "side5" ? "Content for Side 5" : sectionItem === "side6" ? "Content for Side 6" : ""}
+                  <p className=" text-2xl text-white p-3">
+                    {sectionItem === "intro"
+                      ? ""
+                      : sectionItem === "side1"
+                      ? "Evolve your business digitally."
+                      : sectionItem === "side2"
+                      ? "Empower your team with digital tools"
+                      : sectionItem === "side3"
+                      ? "Fuel your growth with digital solutions"
+                      : sectionItem === "side4"
+                      ? "Innovate with cutting-edge technology"
+                      : sectionItem === "side5"
+                      ? "Navigate the digital landscape effortlessly"
+                      : sectionItem === "side6"
+                      ? "Transform your business for the digital age"
+                      : ""}
                   </p>
                 </>
               )}
@@ -46,16 +82,16 @@ export const UI = ({ section, onSectionChange }) => {
         </div>
       </div>
       <div className="flex justify-center items-center gap-2">
-  {sections.map((sectionItem, idx) => (
-    <div
-      key={sectionItem}
-      className={`rounded-full border border-stone-100 w-3 h-3 flex items-center justify-center hover:cursor-pointer hover:opacity-80 transition-opacity duration-200 pointer-events-auto ${
-        currentSectionIndex === idx ? "bg-white" : "" // Change bg-white based on currentSectionIndex
-      }`}
-      onClick={() => onSectionChange(idx)}
-    ></div>
-  ))}
-</div>
+        {sections.map((sectionItem, idx) => (
+          <div
+            key={sectionItem}
+            className={`rounded-full border border-stone-100 w-3 h-3 flex items-center justify-center hover:cursor-pointer hover:opacity-80 transition-opacity duration-200 pointer-events-auto ${
+              currentSectionIndex === idx ? "bg-white" : "" // Change bg-white based on currentSectionIndex
+            }`}
+            onClick={() => onSectionChange(idx)}
+          ></div>
+        ))}
+      </div>
     </main>
   );
 };

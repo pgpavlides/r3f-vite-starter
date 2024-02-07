@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, MeshReflectorMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { useStore } from "../global/zustand";
 
@@ -18,6 +18,8 @@ const colorWhite = new THREE.MeshStandardMaterial({
 const colorYellow = new THREE.MeshStandardMaterial({
   color: new THREE.Color(0xffd500),
 });
+
+const reflector = <MeshReflectorMaterial />;
 
 export function Model({ props, onSectionChange }) {
   const [hovered1, setHover1] = useState(false);
@@ -60,9 +62,9 @@ export function Model({ props, onSectionChange }) {
   };
 
   return (
-    <group dispose={null} scale={2}>
+    <group dispose={null} scale={1.5}>
       <mesh
-        castShadow
+        // castShadow
         receiveShadow
         geometry={nodes.MAIN_FRAME.geometry}
         material={colorBlack}
@@ -72,16 +74,16 @@ export function Model({ props, onSectionChange }) {
         }}
       >
         <mesh
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.LETTER_BACKGROUND.geometry}
-          material={colorBlack}
+          material={colorLightBlack}
           onClick={(e) => {
             e.stopPropagation();
           }}
         />
         <mesh
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.LETTER_FRAMES.geometry}
           material={colorLightBlack}
@@ -92,7 +94,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover1(true)}
           onPointerLeave={() => setHover1(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.E1.geometry}
           material={hovered1 ? colorYellow : colorWhite}
@@ -107,7 +109,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover2(true)}
           onPointerLeave={() => setHover2(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.E2.geometry}
           material={hovered2 ? colorYellow : colorWhite}
@@ -122,7 +124,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover3(true)}
           onPointerLeave={() => setHover3(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.G.geometry}
           material={hovered3 ? colorYellow : colorWhite}
@@ -137,7 +139,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover4(true)}
           onPointerLeave={() => setHover4(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.I.geometry}
           material={hovered4 ? colorYellow : colorWhite}
@@ -152,7 +154,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover5(true)}
           onPointerLeave={() => setHover5(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.N.geometry}
           material={hovered5 ? colorYellow : colorWhite}
@@ -167,7 +169,7 @@ export function Model({ props, onSectionChange }) {
         <mesh
           onPointerEnter={() => setHover6(true)}
           onPointerLeave={() => setHover6(false)}
-          castShadow
+          // castShadow
           receiveShadow
           geometry={nodes.T.geometry}
           material={hovered6 ? colorYellow : colorWhite}
