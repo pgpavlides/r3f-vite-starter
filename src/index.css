@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
+
 #root {
   width: 100vw;
   height: 100vh;
@@ -6,9 +8,18 @@
 
 body {
   margin: 0;
+  font-family: "Protest Riot", sans-serif;
 }
 
-
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 
 .canvasStyleDefault {
   /* background: red; */
@@ -18,12 +29,12 @@ body {
 
 .canvasStyleTwoTouches {
   /* background: blue; */
-  touch-action: auto ; /* Directly setting 'auto' without !important, as we manage specificity through classes */
+  touch-action: auto; /* Directly setting 'auto' without !important, as we manage specificity through classes */
 }
 
 .loading-screen {
   position: fixed;
-  
+
   top: 0;
   left: 0;
   width: 100vw;
@@ -42,7 +53,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
 
 .loading-screen__title {
@@ -57,12 +67,10 @@ body {
   width: 20rem;
   /* height: 5rem; */
   margin: 3rem 0;
-  
 }
 
-
 .progress__container {
-  width: 33% ;
+  width: 33%;
   height: 1rem;
   background-color: rgb(102 106 113 / 42%);
   position: relative;
@@ -77,8 +85,6 @@ body {
   transition: width 0.5s ease-in-out;
 }
 
-
-
 .loading-screen--hidden {
   animation: fade-out 0.5s ease-in-out forwards 1s;
 }
@@ -92,3 +98,43 @@ body {
     visibility: hidden;
   }
 }
+
+.label {
+  padding: 0.5rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  text-align: center;
+}
+
+.label__price {
+  font-size: 2rem;
+  color: #dbdbdb;
+}
+
+.label_price {
+  font-size: 2rem;
+  color: #9a9a9a;
+}
+
+
+/* ================INFO WINDOW================ */
+
+.info-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  background: white;
+  z-index: 9999;
+}
+
+/* .info-content h2 {
+  margin-top: 0;
+}
+
+.info-window button {
+  margin-top: 10px;
+} */

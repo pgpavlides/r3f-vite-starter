@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { Experience } from "./components/Experience";
+import { Experience } from "./components/Experience.jsx";
+import InfoWindow from "./components/InfoWindow.jsx";
 
 function App() {
   const [controlSwitch, setControlSwitch] = useState(false);
   const [canvasClassName, setCanvasClassName] = useState("canvasStyleDefault");
+  const [infoVisible, setInfoVisible] = useState(false);
+
+  const info = {
+    title: "Title",
+    description: "Description",
+  
+  };
 
   const handleTouchStart = (e) => {
     if (e.touches.length === 2) {
@@ -18,7 +26,7 @@ function App() {
 
   return (
     <>
-      {/* <MyComponent /> */}
+      <InfoWindow isVisible={infoVisible} info={info} onClose={() => setInfoVisible(false)} />
       <Canvas
         onScroll={e => console.log('onScroll')}
         onTouchStart={handleTouchStart}
