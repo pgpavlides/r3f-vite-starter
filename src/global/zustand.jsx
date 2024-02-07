@@ -1,16 +1,14 @@
-import {create} from 'zustand'
-
-
+// store.js
+import create from 'zustand';
 
 export const useStore = create((set) => ({
-    globalNumber: 20,
-    gameStage: 'view0',
-    setGameStage1: () => set(state => ({ gameStage : 'view1' })),
-    setGameStage2: () => set(state => ({ gameStage : 'view2' })),
-    setGameStage3: () => set(state => ({ gameStage : 'view3' })),
-    setGameStage4: () => set(state => ({ gameStage : 'view4' })),
-    setGameStage5: () => set(state => ({ gameStage : 'view5' })),
-    setGameStage6: () => set(state => ({ gameStage : 'view6' })),
-    setGameStage7: () => set(state => ({ gameStage : 'view7' })),
-    setGameStage8: () => set(state => ({ gameStage : 'view8' })),
-}))
+  globalSides: 20,
+  cubeSide: 'side0',
+  setSide1: () => set(() => ({ cubeSide: 'side1' })),
+  setSide2: () => set(() => ({ cubeSide: 'side2' })),
+  setSide3: () => set(() => ({ cubeSide: 'side3' })),
+  setSide4: () => set(() => ({ cubeSide: 'side4' })),
+  setSide5: () => set(() => ({ cubeSide: 'side5' })),
+  setSide6: () => set(() => ({ cubeSide: 'side6' })),
+}));
+

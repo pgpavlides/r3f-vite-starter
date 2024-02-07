@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Experience } from "./components/Experience.jsx";
 import InfoWindow from "./components/InfoWindow.jsx";
+import { UI } from "./components/UI.jsx";
 
 function App() {
   const [controlSwitch, setControlSwitch] = useState(false);
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <>
+      <UI section={0} onSectionChange={() => console.log('onSectionChange')} />
       <InfoWindow isVisible={infoVisible} info={info} onClose={() => setInfoVisible(false)} />
       <Canvas
         onScroll={e => console.log('onScroll')}

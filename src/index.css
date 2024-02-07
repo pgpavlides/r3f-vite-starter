@@ -1,14 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 #root {
   width: 100vw;
   height: 100vh;
   background-color: #292929;
+  font-family: "Protest Riot", sans-serif;
+  font-size: 2rem;
+
 }
 
 body {
   margin: 0;
-  font-family: "Protest Riot", sans-serif;
 }
 
 .noselect {

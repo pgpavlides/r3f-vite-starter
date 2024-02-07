@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback,useContext } from "react";
 import { useThree } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 import { Model } from "./Model";
+import { useStore } from "../global/zustand";
 
 
 const getDeviceType = () => {
@@ -18,9 +19,12 @@ export function Experience({ camera }) {
   const [deviceType, setDeviceType] = useState(getDeviceType());
   const events = useThree(state => state.events);
 //   events.disconnect();
+  const cubeSide = useStore((state) => state.cubeSide);
+
 
   useEffect(() => {
     const handleResize = () => {
+      
       const newDeviceType = getDeviceType();
       setDeviceType(newDeviceType);
     };
@@ -28,6 +32,12 @@ export function Experience({ camera }) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useEffect(() => {
+    
+  }, [cubeSide]);
+
+
 
   //================= APPLY SETTINGS =================
 
