@@ -1,8 +1,94 @@
 #root {
   width: 100vw;
   height: 100vh;
+  background-color: #292929;
 }
 
 body {
   margin: 0;
+}
+
+
+
+.canvasStyleDefault {
+  /* background: red; */
+  /* Assuming 'auto !important' is required for another rule to override, but here we just set 'auto' */
+  touch-action: pan-y !important;
+}
+
+.canvasStyleTwoTouches {
+  /* background: blue; */
+  touch-action: auto ; /* Directly setting 'auto' without !important, as we manage specificity through classes */
+}
+
+.loading-screen {
+  position: fixed;
+  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  background-color: #242424;
+  background-image: linear-gradient(0deg, #292929 0%, #1d1d1d 74%);
+}
+
+.loading-screen__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.loading-screen__title {
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #dbdbdb;
+  margin: 0;
+}
+
+.loading-screen__logo {
+  width: 20rem;
+  /* height: 5rem; */
+  margin: 3rem 0;
+  
+}
+
+
+.progress__container {
+  width: 33% ;
+  height: 1rem;
+  background-color: rgb(102 106 113 / 42%);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.progress__bar {
+  width: 0;
+  height: 100%;
+  background-color: #dbdbdb;
+  transition: width 0.5s ease-in-out;
+}
+
+
+
+.loading-screen--hidden {
+  animation: fade-out 0.5s ease-in-out forwards 1s;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
