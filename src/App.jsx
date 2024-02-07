@@ -25,6 +25,7 @@ function App() {
     }
   };
 
+  
   return (
     <>
       <UI section={0} onSectionChange={() => console.log('onSectionChange')} />

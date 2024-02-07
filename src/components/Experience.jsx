@@ -1,9 +1,14 @@
-import React, { useEffect, useRef, useState, useCallback,useContext } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useContext,
+} from "react";
 import { useThree } from "@react-three/fiber";
 import { CameraControls } from "@react-three/drei";
 import { Model } from "./Model";
 import { useStore } from "../global/zustand";
-
 
 const getDeviceType = () => {
   if (window.innerWidth < 768) return "mobile";
@@ -17,14 +22,12 @@ export function Experience({ camera }) {
   const [controlsReady, setControlsReady] = useState(false);
   const [animationState, setAnimationState] = useState("starting");
   const [deviceType, setDeviceType] = useState(getDeviceType());
-  const events = useThree(state => state.events);
-//   events.disconnect();
+  const events = useThree((state) => state.events);
+  //   events.disconnect();
   const cubeSide = useStore((state) => state.cubeSide);
-
 
   useEffect(() => {
     const handleResize = () => {
-      
       const newDeviceType = getDeviceType();
       setDeviceType(newDeviceType);
     };
@@ -33,11 +36,43 @@ export function Experience({ camera }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // const zoomIn  = () => cameraControlsRef.current.zoom(   camera.zoom / 2, true );
+  // const zoomOut = () => cameraControlsRef.current.zoom( - camera.zoom / 2, true );
+
   useEffect(() => {
-    
+
+
+    if (cubeSide === "side0") {
+      cameraControlsRef.current.setLookAt(5, 5, 5, 0, 0, 0, true);
+    } else if (cubeSide === "side1") {
+      cameraControlsRef.current.setLookAt(0.885, -0.003, -0.004, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    } else if (cubeSide === "side2") {
+      cameraControlsRef.current.setLookAt(-0.014, -0.855, 0.037, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    } else if (cubeSide === "side3") {
+      cameraControlsRef.current.setLookAt(-0.025, 0.078, -0.908, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    } else if (cubeSide === "side4") {
+      cameraControlsRef.current.setLookAt(0, -0.013, 0.895, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    } else if (cubeSide === "side5") {
+      cameraControlsRef.current.setLookAt(-0.887, -0.121, -0.005, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    } else if (cubeSide === "side6") {
+      cameraControlsRef.current.setLookAt(-0.017, 0.895, -0.062, 0, 0, 0, true);
+      cameraControlsRef.current.dolly(-6.885, true);
+
+    }
+
+  
+      
   }, [cubeSide]);
-
-
 
   //================= APPLY SETTINGS =================
 
@@ -131,7 +166,6 @@ export function Experience({ camera }) {
   //   }, 5000);
   // };
 
-
   //   const timer = setTimeout(applySettings, 300);
 
   //===================================================
@@ -150,24 +184,20 @@ export function Experience({ camera }) {
   //   }
   // }, [controlsReady]);
 
- 
-
-//   const events = useThree((state) => state.events);
+  //   const events = useThree((state) => state.events);
 
   return (
     <>
-     
-        <CameraControls
-          enabled={true}
-          smoothTime={1.5}
-          ref={cameraControlsRef}
-          makeDefault
-        />
-        <ambientLight intensity={5} />
-        <pointLight />
-        {/* <ExtraModels /> */}
-        <Model/>
-      
+      <CameraControls
+        enabled={true}
+        smoothTime={1.5}
+        ref={cameraControlsRef}
+        makeDefault
+      />
+      <ambientLight intensity={5} />
+      <pointLight />
+      {/* <ExtraModels /> */}
+      <Model />
     </>
   );
 }
