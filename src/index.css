@@ -1,111 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap");
-
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-#root {
-  width: 100vw;
-  height: 100vh;
-  background-color: #292929;
-  font-family: "Protest Riot", sans-serif;
-  font-size: 2rem;
-
-}
-
-body {
-  margin: 0;
-}
-
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-
-.canvasStyleDefault {
-  /* background: red; */
-  /* Assuming 'auto !important' is required for another rule to override, but here we just set 'auto' */
-  touch-action: pan-y !important;
-}
-
-.canvasStyleTwoTouches {
-  /* background: blue; */
-  touch-action: auto; /* Directly setting 'auto' without !important, as we manage specificity through classes */
-}
-
-.loading-screen {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  opacity: 1;
-  background-color: #242424;
-  background-image: linear-gradient(0deg, #292929 0%, #1d1d1d 74%);
-}
-
-.loading-screen__container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.loading-screen__title {
-  font-size: 4rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #dbdbdb;
-  margin: 0;
-}
-
-.loading-screen__logo {
-  width: 20rem;
-  /* height: 5rem; */
-  margin: 3rem 0;
-}
-
-.progress__container {
-  width: 33%;
-  height: 1rem;
-  background-color: rgb(102 106 113 / 42%);
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.progress__bar {
-  width: 0;
-  height: 100%;
-  background-color: #dbdbdb;
-  transition: width 0.5s ease-in-out;
-}
-
-.loading-screen--hidden {
-  animation: fade-out 0.5s ease-in-out forwards 1s;
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 .label {
   padding: 0.5rem 1.5rem;
@@ -146,3 +38,74 @@ body {
 .info-window button {
   margin-top: 10px;
 } */
+
+
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.grid-container-course-title {
+  font-size: 2rem;
+  margin:0;
+  font-weight: 700;
+  margin: 1rem 0 1rem 0;
+  
+}
+
+.grid-container-course-title-extra {
+  font-size: 1.5rem;
+  margin:0;
+  font-weight: 700;
+  margin: 1rem 0 1rem 0;
+  
+}
+
+.grid-container-course-description {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Creates two columns */
+  gap: 20px; /* Adjust the gap between items */
+  padding: 20px; /* Optional: Adjust padding around the grid */
+  border: 1px solid black;
+}
+
+.grid-item-course-description {
+  position: relative; /* Needed for pseudo-element positioning */
+  display: flex; /* Aligns the icon with the text */
+  align-items: center; /* Centers items vertically */
+  gap: 20px; /* Space between icon and text */
+  
+  padding: 10px;
+  padding-left: 30px; /* Make space for the pseudo-element icon */
+  border-radius: 5px; /* Rounded corners for grid items */
+ /* box-shadow: 0 2px 4px rgba(0,0,0,0.1);  Subtle shadow */
+}
+
+.grid-item-course-description::before {
+  content: "✓"; /* Your chosen Unicode character */
+  position: absolute;
+  left: 0px; /* Adjust based on padding */
+  font-size: 20px; /* Adjust size as needed */
+  color: #4CAF50; /* Example color, adjust as needed */
+}
+
+.grid-item-course-extra-description {
+  position: relative; /* Needed for pseudo-element positioning */
+  display: flex; /* Aligns the icon with the text */
+  align-items: center; /* Centers items vertically */
+  gap: 20px; /* Space between icon and text */
+  
+  padding: 10px;
+  padding-left: 30px; /* Make space for the pseudo-element icon */
+  border-radius: 5px; /* Rounded corners for grid items */
+ /* box-shadow: 0 2px 4px rgba(0,0,0,0.1);  Subtle shadow */
+}
+
+.grid-item-course-extra-description::before {
+  content: "⤑"; /* Your chosen Unicode character */
+  position: absolute;
+  left: 0px; /* Adjust based on padding */
+  font-size: 20px; /* Adjust size as needed */
+  color: #000000; /* Example color, adjust as needed */
+}

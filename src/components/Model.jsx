@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGLTF, MeshReflectorMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { useStore } from "../global/zustand";
+import { motion } from "framer-motion-3d";
 
 const colorRed = new THREE.MeshStandardMaterial({
   color: new THREE.Color(0xffd500),
@@ -16,10 +17,8 @@ const colorWhite = new THREE.MeshStandardMaterial({
   color: new THREE.Color(0xffffff),
 });
 const colorYellow = new THREE.MeshStandardMaterial({
-  color: new THREE.Color(0xffd500),
+  color: new THREE.Color(0x3db7b1),
 });
-
-const reflector = <MeshReflectorMaterial />;
 
 export function Model({ props, onSectionChange }) {
   const [hovered1, setHover1] = useState(false);
@@ -31,12 +30,6 @@ export function Model({ props, onSectionChange }) {
 
   const { nodes } = useGLTF("/CUBE_EXPORT.glb");
 
-  const handleClick = (setSideFunction, e) => {
-    setSideFunction();
-    console.log(cubeSide);
-    e.stopPropagation(); // Stop event propagation
-  };
-
   const cubeSide = useStore((state) => state.cubeSide);
 
   const setSide1 = useStore((state) => state.setSide1);
@@ -45,21 +38,6 @@ export function Model({ props, onSectionChange }) {
   const setSide4 = useStore((state) => state.setSide4);
   const setSide5 = useStore((state) => state.setSide5);
   const setSide6 = useStore((state) => state.setSide6);
-
-  const handleGeometryClick = (geometryName) => {
-    const sectionMapping = {
-      "E1.geometry": 0,
-      "E2.geometry": 1,
-      "G.geometry": 2,
-      "I.geometry": 3,
-      "N.geometry": 4,
-      "T.geometry": 5,
-    };
-    const sectionIndex = sectionMapping[geometryName];
-    if (sectionIndex !== undefined) {
-      onSectionChange(sectionIndex);
-    }
-  };
 
   return (
     <group dispose={null} scale={1.5}>
@@ -91,7 +69,9 @@ export function Model({ props, onSectionChange }) {
             e.stopPropagation();
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover1(true)}
           onPointerLeave={() => setHover1(false)}
           // castShadow
@@ -106,7 +86,9 @@ export function Model({ props, onSectionChange }) {
             console.log(cubeSide);
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover2(true)}
           onPointerLeave={() => setHover2(false)}
           // castShadow
@@ -121,7 +103,9 @@ export function Model({ props, onSectionChange }) {
             console.log(cubeSide);
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover3(true)}
           onPointerLeave={() => setHover3(false)}
           // castShadow
@@ -136,7 +120,9 @@ export function Model({ props, onSectionChange }) {
             console.log(cubeSide);
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover4(true)}
           onPointerLeave={() => setHover4(false)}
           // castShadow
@@ -151,7 +137,9 @@ export function Model({ props, onSectionChange }) {
             console.log(cubeSide);
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover5(true)}
           onPointerLeave={() => setHover5(false)}
           // castShadow
@@ -166,7 +154,9 @@ export function Model({ props, onSectionChange }) {
             console.log(cubeSide);
           }}
         />
-        <mesh
+        <motion.mesh
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 1 }}
           onPointerEnter={() => setHover6(true)}
           onPointerLeave={() => setHover6(false)}
           // castShadow
